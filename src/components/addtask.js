@@ -22,7 +22,7 @@ class Todos extends Component {
 
   setNewTask(e) {
     e.preventDefault();
-    addTask(this.state);    
+    addTask(this.state);
   }
 
   render() {

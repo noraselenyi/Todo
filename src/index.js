@@ -1,10 +1,10 @@
-import App from './App';
+/* eslint-disable react/jsx-filename-extension */
 // import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
+import App from './App';
 import reducer from './reducers/reducer';
 
 const store = createStore(reducer);

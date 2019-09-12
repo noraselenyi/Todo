@@ -9,6 +9,9 @@ const reducer = (state = [], action) => {
       state = state.slice();
       state.splice(action.payload, 1);
       break;
+    case 'DONE_TASK':
+      state[action.payload].done = true;
+      break;
     default: return state;
   }
   return state;

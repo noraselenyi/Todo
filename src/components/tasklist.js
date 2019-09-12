@@ -1,28 +1,36 @@
-/* eslint-disable react/sort-comp */
-/* eslint-disable no-console */
-/* eslint-disable semi */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-array-index-key */
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
-import { deleteTask } from '../actions/actions';
+import { deleteTask, doneTask } from '../actions/actions';
 
 class Tasklist extends Component {
+  listOfDones = [];
 
   eraseTask(index) {
     this.props.deleteTask(index);
   }
 
-  getTodos(todoss) {
+  getItDone(element, index) {
+    this.props.doneTask(index);
+    this.listOfDones.push(element.newtask);
+    this.props.deleteTask(index);
+    this.showDones()
+  }
+
+  showDones(){
+    const result = this.listOfDones.map((element, index) =>
+      <div key={index}>
+        <p key={index}>{element}</p>
+      </div>
+    );
+    return result
+  }
+
+  getTodos(todoss) {    
     const result = todoss.map((element, index) => (
       <div key={index}>
         <p key={index}>{element.newtask}</p>
         <button onClick={() => this.eraseTask(index)} type="button">Delete</button>
+        <button onClick={() => this.getItDone(element, index)} type="button">Done</button>
       </div>
     ));
     return result;
@@ -33,6 +41,8 @@ class Tasklist extends Component {
       <div>
         <h1>Todos</h1>
         {this.getTodos(this.props.todos)}
+        <h1>Dones</h1>
+        {this.showDones()}
       </div>
     );
   }
@@ -42,6 +52,7 @@ const mapStateToProps = (state) => ({ todos: state });
 
 const mapDispatchToProps = {
   deleteTask,
+  doneTask,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tasklist);
