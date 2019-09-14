@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteTask, doneTask } from '../actions/actions';
+import Popup from 'reactjs-popup';
+import '../popup.css';
+
 
 class Tasklist extends Component {
   listOfDones = [];
@@ -16,7 +19,7 @@ class Tasklist extends Component {
     this.showDones()
   }
 
-  showDones(){
+  showDones() {
     const result = this.listOfDones.map((element, index) =>
       <div key={index}>
         <p key={index}>{element}</p>
@@ -25,12 +28,31 @@ class Tasklist extends Component {
     return result
   }
 
-  getTodos(todoss) {    
-    const result = todoss.map((element, index) => (
+  getTodos(tasks) {
+    const result = tasks.map((element, index) => (
       <div key={index}>
         <p key={index}>{element.newtask}</p>
         <button onClick={() => this.eraseTask(index)} type="button">Delete</button>
-        <button onClick={() => this.getItDone(element, index)} type="button">Done</button>
+        <Popup trigger={<button type="button">Done</button>} modal>
+          {close => (
+            <div className="modal">
+              <div className="content">
+                Yay! Your task is done!
+          <br />
+              </div>
+              <div className="actions">
+                <button
+                  className="button"
+                  onClick={() => {
+                    close();
+                    this.getItDone(element, index)
+                  }}>
+                  Ok
+          </button>
+              </div>
+            </div>
+          )}
+        </Popup>
       </div>
     ));
     return result;
