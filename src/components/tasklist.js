@@ -21,7 +21,8 @@ class Tasklist extends Component {
 
   showDones() {
     const result = this.listOfDones.map((element, index) =>
-      <div key={index}>
+      <div className="donetask" key={index}>
+        <span role="img" aria-label="tick">✔️</span>
         <p key={index}>{element}</p>
       </div>
     );

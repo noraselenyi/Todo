@@ -20,16 +20,17 @@ class Todos extends Component {
     });
   };
 
-  setNewTask(e) {
-    e.preventDefault();
-    addTask(this.state);
+  setNewTask() {
+    if (this.state.newtask !== '') {
+      this.props.addTask(this.state);
+    }
   }
 
   render() {
     return (
       <div>
         <input type="text" placeholder="type here" ref="task" onChange={this.getFromInput} />
-        <button onClick={() => this.props.addTask(this.state)}>Add</button>
+        <button onClick={() => this.setNewTask()}>Add</button>
       </div>
     );
   }
