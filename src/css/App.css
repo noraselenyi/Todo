@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:  rgba(37, 37, 37, 0.781);
+  background-image: linear-gradient(to right, rgb(240, 240, 240), rgb(170, 191, 204));
+}
+
+.navbar {
+  opacity: 0.8;
+  display: flex;
+  width: 70vw;
+  justify-content: center;
+  border-radius: 10px;
+  margin-bottom: 4vh;
+  font-size: 3vh;
+}
+
+.reactlogo {
+  background: url('./reactlogo.png');
+  height: 140px;
+  width: 160px;
+}
+.reduxlogo {
+  margin-top: 10px;
+  background: url('./reduxlogo.png');
+  height: 130px;
+  width: 147px;
+}
+
+.todoapp {
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(37, 37, 37, 0.781);
+  letter-spacing: 0.1em;
+  transition: 0.5s letter-spacing;
+}
+
+.todoapp:hover{
+  letter-spacing: 0.2em;
+  text-shadow: 5px 5px 15px rgba(37, 37, 37, 0.781);
+}
+
+.addTask {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1vh;
+  margin-bottom: 3vh;
+}
+
+input {
+  width: 40vw;
+  border-radius: 5px;
+  height: 2rem;
+  font-size: 1.2rem;
+  border-style: solid;
+  border-color: rgb(157, 156, 156);
+  padding-left: 10px;
+}
+
+.addButton {
+  margin-left: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  background-color: rgb(231, 231, 231);
+  width: 5vw; 
+  height: 4vh;
+  border: 2px solid  rgb(157, 156, 156);
+}
+
+.todos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listtasks {
+  background-image: linear-gradient(-90 rgb(240, 240, 240), rgb(170, 191, 204));
+  padding: 1vw 2vw;
+  border-radius: 10px;
+  box-shadow: rgb(109, 109, 109) 5px 5px 5px 5px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+.buttonsForTasks {
+  display: flex;
+}
+
+.donebutton, .delete {
+  display: flex;
+  font-size: 1.5rem;
+}
+
+button{
+  background-color: rgb(224, 224, 224);
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  transition: 0.5s border-radius;
+}
+
+
+button:active{
+  filter: brightness(80%)
+}
+
+.trash {
+  color: rgba(255, 93, 93, 0.822);
+}
+
+.delete > div {
+  background-color:  rgba(255, 93, 93, 0.822);
+}
+
+.check {
+  color: rgba(57, 202, 57, 0.753);
+}
+
+.donebutton > div {
+  background-color: rgba(57, 202, 57, 0.753);
+}
+
+
+.box{
+  color:  rgba(80, 80, 80, 0.781);
+  opacity: 0;
+  transition: 1.2s opacity;
+  border-radius: 0px 8px 8px 0px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 35px;
+  width: 5vw;
+  padding-top: 5px;
+}
+
+.delete:hover > button, .donebutton:hover > button{
+  border-radius: 10px 0px 0px 10px;
+}
+
+.delete:hover > .box, .donebutton:hover >.box{
+  opacity: 1;
+}
+
+.deletesecond {
+  background-color: rgb(255, 93, 93);
+}
