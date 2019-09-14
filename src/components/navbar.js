@@ -6,8 +6,10 @@ import React, { Component } from 'react';
 class Navbar extends Component {
   render() {
     return (
-      <div>
-        <h1>Todo Application</h1>
+      <div className="navbar">
+        <div className="reactlogo" />
+        <h1 className="todoapp">Todo Application</h1>
+        <div className="reduxlogo" />
       </div>
     );
   }

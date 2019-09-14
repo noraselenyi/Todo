@@ -1,0 +1,16 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popupText {
+  font-size: 2rem;
+}
+
+.okbutton {
+  width: 50px;
+  height: 40px;
+  border: 2px solid  rgb(157, 156, 156);
+}

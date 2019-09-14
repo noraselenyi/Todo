@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteTask, doneTask } from '../actions/actions';
 import Popup from 'reactjs-popup';
-import '../popup.css';
+import '../css/popup.css';
+import '../css/App.css'
 
 
 class Tasklist extends Component {
@@ -22,7 +23,6 @@ class Tasklist extends Component {
   showDones() {
     const result = this.listOfDones.map((element, index) =>
       <div className="donetask" key={index}>
-        <span role="img" aria-label="tick">✔️</span>
         <p key={index}>{element}</p>
       </div>
     );
@@ -31,41 +31,75 @@ class Tasklist extends Component {
 
   getTodos(tasks) {
     const result = tasks.map((element, index) => (
-      <div key={index}>
+      <div className="todos" key={index}>
+
         <p key={index}>{element.newtask}</p>
-        <button onClick={() => this.eraseTask(index)} type="button">Delete</button>
-        <Popup trigger={<button type="button">Done</button>} modal>
-          {close => (
-            <div className="modal">
-              <div className="content">
-                Yay! Your task is done!
-          <br />
-              </div>
-              <div className="actions">
-                <button
-                  className="button"
-                  onClick={() => {
-                    close();
-                    this.getItDone(element, index)
-                  }}>
-                  Ok
-          </button>
+        <div className="buttonsForTasks">
+
+          <div className="donebutton">
+            <button onClick={() => this.getItDone(element, index)} type="button" className="check">
+              <i className="fas fa-check"></i>
+            </button>
+            <div className="box" onClick={() => this.getItDone(element, index)}>
+              done
+            </div>
+          </div>
+
+          <Popup trigger={
+            <div className="delete">
+              <button className="trash">
+                <i className="far fa-trash-alt"></i>
+              </button>
+              <div className="box">
+                delete
               </div>
             </div>
-          )}
-        </Popup>
+          } modal>
+            {close => (
+              <div className="modal">
+                <div>
+                  <p className="popupText">
+                  Task is deleted!
+                  <span role="img" aria-label="tick">   ✔️</span>
+                  </p>
+                </div>
+                <div>
+                  <button
+                    className="okbutton"
+                    onClick={() => {
+                      close();
+                      this.eraseTask(index);
+                    }}>
+                    Ok
+                  </button>
+                </div>
+              </div>
+            )}
+          </Popup>
+        </div>
       </div>
+
     ));
     return result;
+  }
+
+  getDones() {
+    if (this.listOfDones.length !== 0) {
+      return (
+        <h1>Dones</h1>
+      )
+    }
   }
 
   render() {
     return (
       <div>
-        <h1>Todos</h1>
-        {this.getTodos(this.props.todos)}
-        <h1>Dones</h1>
-        {this.showDones()}
+        <div className="listtasks">
+          <h1>Tasks</h1>
+          {this.getTodos(this.props.todos)}
+          {this.getDones()}
+          {this.showDones()}
+        </div>
       </div>
     );
   }

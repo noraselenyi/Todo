@@ -1,8 +1,3 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/no-string-refs */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/jsx-filename-extension */
 import React, { Component } from 'react';
 
 import { addTask } from '../actions/actions';
@@ -28,9 +23,11 @@ class Todos extends Component {
 
   render() {
     return (
-      <div>
-        <input type="text" placeholder="type here" ref="task" onChange={this.getFromInput} />
-        <button onClick={() => this.setNewTask()}>Add</button>
+      <div className="addTask">
+        <input type="text" placeholder="type new task here" ref="task" onChange={this.getFromInput} />
+        <button className="addButton" onClick={() => this.setNewTask()}>
+          Add
+        </button>
       </div>
     );
   }
