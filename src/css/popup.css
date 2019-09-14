@@ -10,7 +10,8 @@
 }
 
 .okbutton {
-  width: 50px;
+  margin-bottom: 20px;
+  width: 60px;
   height: 40px;
   border: 2px solid  rgb(157, 156, 156);
 }
